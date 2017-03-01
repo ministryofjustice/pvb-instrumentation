@@ -6,7 +6,7 @@ RSpec.describe PVB::Instrumentation::Faraday::Request do
 
   it 'logs the resquest time and status' do
     subject.process
-    expect(Instrumentation.custom_log_items).to include(
+    expect(PVB::Instrumentation.custom_log_items).to include(
       sentry: { status: 200, request_time: 500 }
                                                 )
   end

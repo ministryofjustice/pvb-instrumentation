@@ -9,7 +9,7 @@ module PVB
           RequestStore.store[:nomis_api_name] = payload[:path].split('/').last
 
           instrument_request
-          Rails.logger.info "#{message} - %.2fms" % [time_in_ms]
+          logger.info "#{message} - %.2fms" % [time_in_ms]
         end
 
       private
@@ -27,14 +27,14 @@ module PVB
         end
 
         def total_time
-          Instrumentation.custom_log_items[category].to_i + time_in_ms
+          PVB::Instrumentation.custom_log_items[category].to_i + time_in_ms
         end
 
         def instrument_request
           # Set to false initialially, error instrumenter reverses this
-          Instrumentation.append_to_log(api_call_error => false)
-          Instrumentation.incr(:api_request_count)
-          Instrumentation.append_to_log(category => total_time)
+          PVB::Instrumentation.append_to_log(api_call_error => false)
+          PVB::Instrumentation.incr(:api_request_count)
+          PVB::Instrumentation.append_to_log(category => total_time)
         end
       end
     end

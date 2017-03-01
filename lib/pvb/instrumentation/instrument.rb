@@ -16,6 +16,7 @@ module PVB
       end
 
       def logger
+        Instrumentation.logger
       end
     end
   end
