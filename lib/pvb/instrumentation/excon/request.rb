@@ -1,5 +1,5 @@
 module PVB
-  module Instrumentation
+  class Instrumentation
     module Excon
       class Request
         include Instrument

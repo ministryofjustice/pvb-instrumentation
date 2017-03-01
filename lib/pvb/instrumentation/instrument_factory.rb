@@ -1,7 +1,7 @@
 require 'pvb/instrumentation/instrument'
 
 module PVB
-  module Instrumentation
+  class Instrumentation
     class InstrumentFactory
       REQUEST         = 'nomis_api.request'.freeze
       RETRY           = 'nomis_api.retry'.freeze

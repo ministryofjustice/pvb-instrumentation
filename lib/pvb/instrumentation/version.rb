@@ -1,5 +1,5 @@
 module PVB
-  module Instrumentation
+  class Instrumentation
     VERSION = '0.1.0'.freeze
   end
 end

@@ -1,5 +1,5 @@
 module PVB
-  module Instrumentation
+  class Instrumentation
     module Instrument
       def initialize(start, finish, payload)
         self.start   = start
@@ -16,7 +16,6 @@ module PVB
       end
 
       def logger
-
       end
     end
   end

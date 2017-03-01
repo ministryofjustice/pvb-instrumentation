@@ -2,7 +2,13 @@ require 'pvb/instrumentation/version'
 require 'pvb/instrumentation/instrument'
 require 'request_store'
 module PVB
-  module Instrumentation
+
+  class Configuration
+    attr_accessor :logger
+  end
+
+
+  class Instrumentation
     class << self
       def append_to_log(payload)
         RequestStore.store[:custom_log_items] ||= {}
