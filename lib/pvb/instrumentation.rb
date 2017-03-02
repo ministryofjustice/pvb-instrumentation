@@ -47,3 +47,5 @@ module PVB
     end
   end
 end
+
+require 'pvb/instrumentation/railtie' if defined?(Rails)
