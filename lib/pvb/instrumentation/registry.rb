@@ -12,7 +12,7 @@ module PVB
         def register(event, klass)
           @registry[event] = klass
           ActiveSupport::Notifications.subscribe(event) do |e, start, finish, _id, payload|
-            processor = Registry.for(e, start, finish, _id, payload)
+            processor = Registry.for(e, start, finish, payload)
             processor.process
           end
         end
