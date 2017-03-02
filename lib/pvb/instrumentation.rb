@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'pvb/instrumentation/version'
 require 'pvb/instrumentation/registry'
 require 'pvb/instrumentation/instrument'
