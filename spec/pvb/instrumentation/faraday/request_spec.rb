@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe PVB::Instrumentation::Faraday::Request do
   include_context 'pvb instrumentation'
@@ -8,6 +8,6 @@ RSpec.describe PVB::Instrumentation::Faraday::Request do
     subject.process
     expect(PVB::Instrumentation.custom_log_items).to include(
       sentry: { status: 200, request_time: 500 }
-                                                )
+    )
   end
 end

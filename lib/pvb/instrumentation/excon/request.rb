@@ -12,7 +12,7 @@ module PVB
           logger.info "#{message} - %.2fms" % [time_in_ms]
         end
 
-      private
+        private
 
         def time_in_ms
           (finish - start) * 1000

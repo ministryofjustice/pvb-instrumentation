@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe PVB::Instrumentation::Excon::Request do
   include_context 'pvb instrumentation'

@@ -10,7 +10,7 @@ module PVB
           )
         end
 
-      private
+        private
 
         def time_in_ms
           (finish - start) * 1000

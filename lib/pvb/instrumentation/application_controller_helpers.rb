@@ -1,7 +1,6 @@
 module PVB
   class Intrumentation
     module ApplicationControllerHelpers
-
       def append_to_log(request_params)
         Instrumentation.append_to_log(request_params)
       end

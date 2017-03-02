@@ -5,7 +5,6 @@ require 'active_support'
 require 'request_store'
 
 module PVB
-
   class Configuration
     attr_accessor :logger
 
@@ -20,7 +19,6 @@ module PVB
 
   class Instrumentation
     class << self
-
       attr_writer :configuration
 
       def configuration

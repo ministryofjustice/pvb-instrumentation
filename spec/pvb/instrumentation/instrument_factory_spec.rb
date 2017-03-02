@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 require 'pvb/instrumentation/registry'
 
 RSpec.describe PVB::Instrumentation::Registry do
@@ -16,13 +16,10 @@ RSpec.describe PVB::Instrumentation::Registry do
 
   describe '.for' do
     describe "with 'nomis_api.request" do
-
       it 'returns an instrumentation request' do
         PVB::Instrumentation::Registry.register(event, PVB::Instrumentation::Excon::Request)
         expect(described_class.for(event, start, finish, payload)).to be_instance_of(PVB::Instrumentation::Excon::Request)
       end
     end
-
-
   end
 end

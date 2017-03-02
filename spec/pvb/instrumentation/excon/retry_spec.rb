@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe PVB::Instrumentation::Excon::Retry do
   include_context 'pvb instrumentation'

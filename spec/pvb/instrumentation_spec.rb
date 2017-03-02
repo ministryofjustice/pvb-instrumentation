@@ -1,7 +1,7 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe PVB::Instrumentation do
-  it "has a version number" do
+  it 'has a version number' do
     expect(PVB::Instrumentation::VERSION).not_to be nil
   end
 
@@ -17,6 +17,5 @@ RSpec.describe PVB::Instrumentation do
         end.to change { PVB::Instrumentation.logger }.from(instance_of(Logger)).to(logger)
       end
     end
-
   end
 end
