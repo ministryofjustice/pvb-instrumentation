@@ -10,7 +10,7 @@ module PVB # :nodoc:
           RequestStore.store[:nomis_api_name] = payload[:path].split('/').last
 
           instrument_request
-          logger.info format("#{message} - %.2fms", [time_in_ms])
+          logger.info format("#{message} - %.2fms", time_in_ms)
         end
 
         private

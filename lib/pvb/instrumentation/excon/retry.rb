@@ -6,7 +6,7 @@ module PVB # :nodoc:
         def process
           PVB::Instrumentation.incr(:api_retry_count)
           PVB::Instrumentation.append_to_log(category => total_time)
-          logger.info format("#{message} - %.2fms", [time_in_ms])
+          logger.info format("#{message} - %.2fms", time_in_ms)
         end
       end
     end
