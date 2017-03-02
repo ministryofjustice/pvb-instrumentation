@@ -1,4 +1,5 @@
 require 'pvb/instrumentation/version'
+require 'pvb/instrumentation/registry'
 require 'pvb/instrumentation/instrument'
 require 'active_support'
 require 'request_store'
@@ -12,6 +13,9 @@ module PVB
       @logger ||= Logger.new(STDOUT)
     end
 
+    def register(event, processor)
+      Instrumentation::Registry.register(event, processor)
+    end
   end
 
   class Instrumentation

@@ -1,4 +1,4 @@
-require 'application_controller_helpers'
+require 'pvb/instrumentation/application_controller_helpers'
 
 module PVB
   class Intrumentation
