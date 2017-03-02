@@ -11,15 +11,20 @@ RSpec.describe PVB::Instrumentation::Registry do
   describe '.register' do
     it 'subscribe to active support notifications' do
       expect(ActiveSupport::Notifications).to receive(:subscribe).with(event)
-      PVB::Instrumentation::Registry.register(event, PVB::Instrumentation::Excon::Request)
+      PVB::Instrumentation::Registry.register(
+        event, PVB::Instrumentation::Excon::Request
+      )
     end
   end
 
   describe '.for' do
     describe "with 'nomis_api.request" do
       it 'returns an instrumentation request' do
-        PVB::Instrumentation::Registry.register(event, PVB::Instrumentation::Excon::Request)
-        expect(described_class.for(event, start, finish, payload)).to be_instance_of(PVB::Instrumentation::Excon::Request)
+        PVB::Instrumentation::Registry.register(
+          event, PVB::Instrumentation::Excon::Request
+        )
+        expect(described_class.for(event, start, finish, payload))
+          .to be_instance_of(PVB::Instrumentation::Excon::Request)
       end
     end
   end

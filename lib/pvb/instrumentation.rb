@@ -5,8 +5,8 @@ require 'pvb/instrumentation/instrument'
 require 'active_support'
 require 'request_store'
 
-module PVB
-  class Configuration
+module PVB # :nodoc:
+  class Configuration # :nodoc:
     attr_accessor :logger
 
     def logger
@@ -18,7 +18,7 @@ module PVB
     end
   end
 
-  class Instrumentation
+  class Instrumentation # :nodoc:
     class << self
       attr_writer :configuration
 

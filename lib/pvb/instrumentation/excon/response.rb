@@ -1,8 +1,8 @@
 # frozen_string_literal: true
-module PVB
-  class Instrumentation
-    module Excon
-      class Response
+module PVB # :nodoc:
+  class Instrumentation # :nodoc:
+    module Excon # :nodoc:
+      class Response # :nodoc:
         include Instrument
 
         def process

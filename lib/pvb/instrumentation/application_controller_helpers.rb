@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-module PVB
-  class Intrumentation
-    module ApplicationControllerHelpers
+module PVB # :nodoc:
+  class Intrumentation # :nodoc:
+    module ApplicationControllerHelpers # :nodoc:
       def append_to_log(request_params)
         Instrumentation.append_to_log(request_params)
       end

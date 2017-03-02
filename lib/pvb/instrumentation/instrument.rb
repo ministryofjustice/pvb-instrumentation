@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-module PVB
-  class Instrumentation
-    module Instrument
+module PVB # :nodoc:
+  class Instrumentation # :nodoc:
+    module Instrument # :nodoc:
       def initialize(start, finish, payload)
         self.start   = start
         self.finish  = finish
@@ -29,11 +29,13 @@ begin
   require 'pvb/instrumentation/excon/retry'
   require 'pvb/instrumentation/excon/response'
   require 'pvb/instrumentation/excon/error'
-rescue LoadError
+rescue LoadError => e
+  STDERR.puts e.message
 end
 
 begin
   require 'faraday'
   require 'pvb/instrumentation/faraday/request'
-rescue LoadError
+rescue LoadError => e
+  STDERR.puts e.message
 end

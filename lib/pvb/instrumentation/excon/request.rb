@@ -1,8 +1,8 @@
 # frozen_string_literal: true
-module PVB
-  class Instrumentation
-    module Excon
-      class Request
+module PVB # :nodoc:
+  class Instrumentation # :nodoc:
+    module Excon # :nodoc:
+      class Request # :nodoc:
         include Instrument
 
         def process
@@ -10,7 +10,7 @@ module PVB
           RequestStore.store[:nomis_api_name] = payload[:path].split('/').last
 
           instrument_request
-          logger.info "#{message} - %.2fms" % [time_in_ms]
+          logger.info format("#{message} - %.2fms", [time_in_ms])
         end
 
         private

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
-module PVB
-  class Instrumentation
-    module Faraday
-      class Request
+module PVB # :nodoc:
+  class Instrumentation # :nodoc:
+    module Faraday # :nodoc:
+      class Request # :nodoc:
         include Instrument
 
         def process

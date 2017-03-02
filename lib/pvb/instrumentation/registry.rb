@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 require 'pvb/instrumentation/instrument'
 
-module PVB
-  class Instrumentation
-    class Registry
+module PVB # :nodoc:
+  class Instrumentation # :nodoc:
+    class Registry # :nodoc:
       attr_reader :registry
       @registry = {}
 
       class << self
         def register(event, klass)
           @registry[event] = klass
-          ActiveSupport::Notifications.subscribe(event) do |e, start, finish, _id, payload|
+          ActiveSupport::Notifications
+            .subscribe(event) do |e, start, finish, _id, payload|
             processor = Registry.for(e, start, finish, payload)
             processor.process
           end

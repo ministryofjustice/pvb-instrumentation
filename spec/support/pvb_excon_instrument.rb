@@ -15,7 +15,8 @@ RSpec.shared_examples_for 'request time logger' do
   end
 
   it 'logs the current request time' do
-    expect(PVB::Instrumentation.logger).to receive(:info).with('Calling NOMIS API: GET /some/path - 500.00ms')
+    expect(PVB::Instrumentation.logger)
+      .to receive(:info).with('Calling NOMIS API: GET /some/path - 500.00ms')
     subject.process
   end
 end
