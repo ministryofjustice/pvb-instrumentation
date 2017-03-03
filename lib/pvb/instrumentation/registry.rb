@@ -10,15 +10,19 @@ module PVB # :nodoc:
       class << self
         def register(event, klass)
           @registry[event] = klass
+
           ActiveSupport::Notifications
-            .subscribe(event) do |e, start, finish, _id, payload|
-            processor = Registry.for(e, start, finish, payload)
-            processor.process
+            .subscribe(event) do |e, start, finish, id, payload|
+
+            event = ActiveSupport::Notifications::Event.new(
+              e, start, finish, id, payload
+            )
+            Registry.for(event).process
           end
         end
 
-        def for(event, *args)
-          @registry[event]&.new(*args)
+        def for(event)
+          @registry[event.name]&.new(event)
         end
 
         def [](event)
