@@ -2,18 +2,17 @@
 module PVB # :nodoc:
   class Instrumentation # :nodoc:
     module Instrument # :nodoc:
-      def initialize(start, finish, payload)
-        self.start   = start
-        self.finish  = finish
-        self.payload = payload
+
+      def initialize(event)
+        self.event = event
       end
 
       private
 
-      attr_accessor :start, :finish, :payload
+      attr_accessor :event
 
       def api_call_error
-        "#{RequestStore.store[:nomis_api_name]}_error"
+        "#{RequestStore.store[:api_call_id]}_error"
       end
 
       def logger
