@@ -4,7 +4,7 @@ module PVB # :nodoc:
     module Instrument # :nodoc:
 
       def initialize(event)
-        self.event
+        self.event = event
       end
 
       private
@@ -12,7 +12,7 @@ module PVB # :nodoc:
       attr_accessor :event
 
       def api_call_error
-        "#{RequestStore.store[:nomis_api_name]}_error"
+        "#{RequestStore.store[:api_call_id]}_error"
       end
 
       def logger

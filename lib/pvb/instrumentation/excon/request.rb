@@ -6,29 +6,23 @@ module PVB # :nodoc:
         include Instrument
 
         def process
-          # Store the name of the api to instrument the outcome of the api call
-          RequestStore.store[:nomis_api_name] = payload[:path].split('/').last
-
+          store_api_name
           instrument_request
-          logger.info format("#{message} - %.2fms", time_in_ms)
+          logger.info format("#{message} - %.2fms", event.duration)
         end
 
         private
 
-        def time_in_ms
-          (finish - start) * 1000
-        end
-
         def category
-          :api
+          event.payload[:category] || event.name
         end
 
         def message
-          "Calling NOMIS API: #{payload[:method].to_s.upcase} #{payload[:path]}"
+          "Calling NOMIS API: #{request_method} #{request_path}"
         end
 
         def total_time
-          PVB::Instrumentation.custom_log_items[category].to_i + time_in_ms
+          PVB::Instrumentation.custom_log_items[category].to_i + event.duration
         end
 
         def instrument_request
@@ -36,6 +30,18 @@ module PVB # :nodoc:
           PVB::Instrumentation.append_to_log(api_call_error => false)
           PVB::Instrumentation.incr(:api_request_count)
           PVB::Instrumentation.append_to_log(category => total_time)
+        end
+
+        def store_api_name
+          RequestStore[:api_call_id] = request_path.split('/').last
+        end
+
+        def request_method
+          event.payload[:method].to_s.upcase
+        end
+
+        def request_path
+          event.payload[:path]
         end
       end
     end

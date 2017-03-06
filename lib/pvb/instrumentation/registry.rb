@@ -8,11 +8,11 @@ module PVB # :nodoc:
       @registry = {}
 
       class << self
-        def register(event, klass)
-          @registry[event] = klass
+        def register(event_name, klass)
+          @registry[event_name] = klass
 
           ActiveSupport::Notifications
-            .subscribe(event) do |e, start, finish, id, payload|
+            .subscribe(event_name) do |e, start, finish, id, payload|
 
             event = ActiveSupport::Notifications::Event.new(
               e, start, finish, id, payload
