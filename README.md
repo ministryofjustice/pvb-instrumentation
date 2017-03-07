@@ -2,7 +2,8 @@
 [![Code Climate](https://codeclimate.com/github/ministryofjustice/pvb-instrumentation/badges/gpa.svg)](https://codeclimate.com/github/ministryofjustice/pvb-instrumentation)
 # Pvb::Instrumentation
 
-Adds instrumentation to any Rail app. Includes default event classes for Excon and Faraday
+Adds instrumentation to any Rail app. Includes default event processor classes 
+for Excon and Faraday.
 
 ## Installation
 
@@ -31,7 +32,7 @@ PVB::Instrumentation.configure do |config|
 
   config.logger = Rails.logger
 
-  # Example using included Excon event classes
+  # Example using included Excon event processor classes 
   config.register('my.excon.error.event',     PVB::Instrumentation::Excon::Error)
   config.register('my.excon.request.event',   PVB::Instrumentation::Excon::Request)
   config.register('my.excon.response.event',  PVB::Instrumentation::Excon::Response)
@@ -41,7 +42,7 @@ PVB::Instrumentation.configure do |config|
   config.register('my.faraday.request.event', PVB::Instrumentation::Faraday::Request)
 
   # Example using your own event class
-  config.register('my.self.defined.event',    My::Self::Defined::Event)
+  config.register('my.self.defined.event',    My::Self::Defined::EventProcessor)
 
   # Add more config.register calls as needed...
 
