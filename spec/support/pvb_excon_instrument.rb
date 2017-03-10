@@ -7,7 +7,7 @@ RSpec.shared_context 'pvb instrumentation' do
   let(:nowish)     { Time.now }
   let(:start)      { nowish }
   let(:finish)     { nowish + 0.5 }
-  let(:setup_proc) { proc {|event| puts event } }
+  let(:setup_proc) { proc {|event| } }
   let(:payload)    {
     { method: :get, path: '/some/path', category: category }
   }
