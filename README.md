@@ -2,9 +2,8 @@
 [![Code Climate](https://codeclimate.com/github/ministryofjustice/pvb-instrumentation/badges/gpa.svg)](https://codeclimate.com/github/ministryofjustice/pvb-instrumentation)
 # Pvb::Instrumentation
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pvb/instrumentation`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Adds instrumentation to any Rail app. Includes default event processor classes 
+for Excon and Faraday.
 
 ## Installation
 
@@ -24,7 +23,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a Rails initialiser similar to:
+
+```ruby
+require 'pvb/instrumentation'
+
+PVB::Instrumentation.configure do |config|
+
+  config.logger = Rails.logger
+
+  # Example using included Excon event processor classes 
+  config.register('my.excon.error.event',     PVB::Instrumentation::Excon::Error)
+  config.register('my.excon.request.event',   PVB::Instrumentation::Excon::Request)
+  config.register('my.excon.response.event',  PVB::Instrumentation::Excon::Response)
+  config.register('my.excon.retry.event',     PVB::Instrumentation::Excon::Retry)
+
+  # Example using included Faraday event classes
+  config.register('my.faraday.request.event', PVB::Instrumentation::Faraday::Request)
+
+  # Example using your own event class
+  config.register('my.self.defined.event',    My::Self::Defined::EventProcessor)
+
+  # Add more config.register calls as needed...
+
+end
+```
 
 ## Development
 
@@ -34,4 +57,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pvb-instrumentation.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ministryofjustice/pvb-instrumentation.
