@@ -13,7 +13,7 @@ module PVB # :nodoc:
       @logger ||= Logger.new(STDOUT)
     end
 
-    def register(event, processor, setup_proc = Proc.new)
+    def register(event, processor, setup_proc = Proc.new {} )
       Instrumentation::Registry.register(event, processor, setup_proc)
     end
   end
