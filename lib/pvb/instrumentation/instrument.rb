@@ -5,11 +5,12 @@ module PVB # :nodoc:
 
       def initialize(event)
         self.event = event
+        yield(event) if block_given?
       end
 
       private
 
-      attr_accessor :event
+      attr_accessor :event, :setup_proc
 
       def api_call_error
         "#{RequestStore.store[:api_call_id]}_error"

@@ -7,13 +7,14 @@ RSpec.shared_context 'pvb instrumentation' do
   let(:nowish)     { Time.now }
   let(:start)      { nowish }
   let(:finish)     { nowish + 0.5 }
+  let(:setup_proc) { proc {|event| } }
   let(:payload)    {
     { method: :get, path: '/some/path', category: category }
   }
 
   let(:event)      { ActiveSupport::Notifications::Event.new(event_name, start, finish, '_id', payload) }
 
-  subject { described_class.new(event) }
+  subject { described_class.new(event, &setup_proc) }
 end
 
 RSpec.shared_examples_for 'request time logger' do
@@ -27,4 +28,9 @@ RSpec.shared_examples_for 'request time logger' do
       .to receive(:info).with('Calling NOMIS API: GET /some/path - 500.00ms')
     subject.process
   end
+
+  it 'calls the setup proc' do
+    expect { |b| described_class.new(event, &b) }.to yield_control
+  end
+
 end
