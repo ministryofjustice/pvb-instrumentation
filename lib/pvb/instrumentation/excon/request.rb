@@ -22,7 +22,8 @@ module PVB # :nodoc:
         end
 
         def total_time
-          PVB::Instrumentation.custom_log_items[category].to_i + event.duration
+          current_time = PVB::Instrumentation.custom_log_items.fetch(category, 0)
+          current_time + event.duration
         end
 
         def instrument_request
