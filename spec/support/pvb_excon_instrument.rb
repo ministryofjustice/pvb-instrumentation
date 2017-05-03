@@ -18,9 +18,13 @@ RSpec.shared_context 'pvb instrumentation' do
 end
 
 RSpec.shared_examples_for 'request time logger' do
+  before do
+    PVB::Instrumentation.append_to_log(category => 1500)
+  end
+
   it 'appends request time to the total request time' do
     subject.process
-    expect(PVB::Instrumentation.custom_log_items).to include(category => 500)
+    expect(PVB::Instrumentation.custom_log_items).to include(category => 2000)
   end
 
   it 'logs the current request time' do
