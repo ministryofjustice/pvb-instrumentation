@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'faraday', '~> 0.10.1'
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency "appraisal"
 end
