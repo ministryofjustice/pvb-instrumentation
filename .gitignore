@@ -13,3 +13,5 @@
 .byebug_history
 .ruby-version
 .ruby-gemset
+tags
+*.gemfile.lock
